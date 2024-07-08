@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    function:
+      definition: "firstConsumer"
+    stream:
+      bindings:
+        firstConsumer-in-0:
+          destination: first.in
+          group: colvir_kafka_demo_in_first
+        first-out-0:
+          destination: first.out
