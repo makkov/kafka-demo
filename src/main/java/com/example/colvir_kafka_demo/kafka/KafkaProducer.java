@@ -34,6 +34,7 @@ public class KafkaProducer {
         try {
             msg = MessageBuilder
                     .withPayload(objectMapper.writeValueAsString(new OutCityMsg(cityEvent.getCity())))
+                    .setHeader("name", cityEvent.getCity())
                     .build();
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

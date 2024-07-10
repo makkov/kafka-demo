@@ -4,6 +4,13 @@ spring:
       bindings:
         city-out-0:
           destination: city.out
+          producer:
+            partition-count: 3
+            partition-key-expression: headers.name
+      kafka:
+        binder:
+          auto-create-topics: true
+          auto-add-partitions: true
 
   datasource:
     driver-class-name: org.postgresql.Driver
