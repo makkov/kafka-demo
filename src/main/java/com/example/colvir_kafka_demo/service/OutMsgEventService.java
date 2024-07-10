@@ -34,4 +34,10 @@ public class OutMsgEventService {
             throw new RuntimeException(e);
         }
     }
+
+    public void updateStatusToSend(Integer id) {
+        OutMsgEvent event = outMsgEventRepository.findById(id).get();
+        event.setStatus(OutMsgStatus.SENT);
+        outMsgEventRepository.save(event);
+    }
 }
