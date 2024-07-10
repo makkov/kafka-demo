@@ -4,11 +4,18 @@ public class OutCityMsg {
 
     private String city;
 
+    public OutCityMsg() {
+    }
+
     public OutCityMsg(String city) {
         this.city = city;
     }
 
     public String getCity() {
         return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

@@ -1,17 +1,16 @@
 package com.example.colvir_kafka_demo.service;
 
-import com.example.colvir_kafka_demo.entity.OutMsgEvent;
-import com.example.colvir_kafka_demo.entity.OutMsgStatus;
 import com.example.colvir_kafka_demo.event.CityEvent;
 import com.example.colvir_kafka_demo.kafka.KafkaProducer;
-import org.springframework.context.event.EventListener;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
 
-@Service
+@Component
 public class EventListenerService {
 
     private final KafkaProducer kafkaProducer;

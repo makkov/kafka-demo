@@ -10,6 +10,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static com.example.colvir_kafka_demo.entity.OutMsgStatus.NEW;
 
 @Service
 public class OutMsgEventService {
@@ -26,7 +29,7 @@ public class OutMsgEventService {
             OutMsgEvent event = outMsgEventRepository.save(new OutMsgEvent(
                     currentDateTime,
                     OutMsgType.CITY,
-                    OutMsgStatus.NEW,
+                    NEW,
                     objectMapper.writeValueAsString(new OutCityMsg(city))
             ));
             return event.getId();
@@ -39,5 +42,9 @@ public class OutMsgEventService {
         OutMsgEvent event = outMsgEventRepository.findById(id).get();
         event.setStatus(OutMsgStatus.SENT);
         outMsgEventRepository.save(event);
+    }
+
+    public List<OutMsgEvent> getNewEvents() {
+        return outMsgEventRepository.findAllByStatus(NEW);
     }
 }
